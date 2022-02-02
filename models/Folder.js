@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 const FolderSchema = new Schema({
-    title: { type: String, required: true },
+    title: { type: String, required: true, unique: true },
     posts: [{
         type: Schema.Types.ObjectId,
         ref: 'Posts'

@@ -36,6 +36,7 @@ const PostSchema = new Schema({
     slug: {
         type: String,
         required: true,
+        unique: true,
     },
     data: {
         type: PostSctructureSchema,

@@ -3,7 +3,8 @@ const { Schema, model } = require('mongoose')
 const UserSchema = new Schema({
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true,
     },
     name: {
         type: String,
@@ -16,6 +17,7 @@ const UserSchema = new Schema({
     userName: {
         type: String,
         required: true,
+        unique: true,
     },
     publicAddress: String,
     posts: [{
@@ -28,7 +30,7 @@ const UserSchema = new Schema({
         required: true,
     },
     updatedAt: {
-        type: String,
+        type: Date,
         required: true,
     },
     status: {
