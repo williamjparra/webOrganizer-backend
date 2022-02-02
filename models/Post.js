@@ -1,9 +1,10 @@
 const { Schema, model } = require('mongoose');
 
 const DescriptionSchema = new Schema({
+    id: { type: String, required: true },
     rawHtml: { type: String, required: true },
     content: { type: String, required: true },
-    type: { type: String, required: true },
+    htmlTagtype: { type: String, required: true },
 })
 
 const PostSctructureSchema = new Schema({
@@ -27,7 +28,6 @@ const PostSchema = new Schema({
     ownerId: {
         type: Schema.Types.ObjectId,
         required: true,
-        ref: 'Users'
     },
     title: {
         type: String,

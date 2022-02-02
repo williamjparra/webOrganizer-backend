@@ -37,7 +37,8 @@ const UserSchema = new Schema({
         type: Boolean,
         default: true,
         required: true
-    }
+    },
+    profileImg: String
 })
 
 module.exports = model('Users', UserSchema)
