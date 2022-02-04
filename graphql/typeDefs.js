@@ -44,6 +44,7 @@ module.exports = gql`
         id: ID!
         tile: String!
         description: String
+        posts: [Post]
     }
     
     input UserInput{
@@ -80,6 +81,7 @@ module.exports = gql`
     type FolderInput{
         tile: String!
         description: String
+        posts: [ID]
     }
 
     type Query {
@@ -93,5 +95,13 @@ module.exports = gql`
         getPostById(_id: ID!): Post
         getPostBySlug(slug: String!): Post
         searchPost(text: String!): [Post]
+        "Querys for folders"
+        getFolders(_id: ID!): [Folder]
+        getFolder(_id: ID!): Folder
+        searchFolder(text: String!); [Folder]
+    }
+
+    type Mutation {
+        
     }
 `
