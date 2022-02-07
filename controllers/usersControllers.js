@@ -13,6 +13,15 @@ class UsersControllers {
         }
     }
 
+    async getUserByPublicAddress(address) {
+        try {
+            const user = await UsersModel.find({publicAddress: address})
+            return user
+        } catch(e) {
+
+        }
+    }
+
     async getUserById(id) {
         try {
             const user = await UsersModel.findById(id).populate('Post')

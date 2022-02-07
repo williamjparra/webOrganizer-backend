@@ -103,6 +103,7 @@ module.exports = gql`
 
     type Mutation {
         "UsersMutations"
+        login(publicAddress: String!): User
         createUser(input: UserInput): User
         updateUserData(_id: ID!, input: UserInput): User
         deleteUser(_id: ID!): User
