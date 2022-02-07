@@ -14,7 +14,7 @@ module.exports = gql`
         lastName: String
         userName: String
         publicAddress: String
-        posts: [ID]
+        posts: [Post]
         createdAt: String
         updatedAt: String
         status: Boolean
@@ -102,6 +102,17 @@ module.exports = gql`
     }
 
     type Mutation {
-        
+        "UsersMutations"
+        createUser(input: UserInput): User
+        updateUserData(_id: ID!, input: UserInput): User
+        deleteUser(_id: ID!): User
+        "post Mutations"
+        createPosts(input: PostInput): Post
+        updatePosts(_id: ID!, input: PostInput): Post
+        deltePosts(_id: ID!): Post
+        "folder's mutation"
+        createFolder(input: FolderInput): Folder
+        updateFolder(_id: ID!, input: FolderInput): Folder,
+        deleteFolder(_id: ID!): Folder
     }
 `
