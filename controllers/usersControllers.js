@@ -70,7 +70,7 @@ class UsersControllers {
             const user = new UsersModel({
                 ...userData
             })
-            const createdUser = user.save()
+            const createdUser = await user.save()
             console.log("*** user ***", user)
             return user
 
