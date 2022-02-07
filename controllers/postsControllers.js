@@ -7,7 +7,7 @@ class PostControllers {
             const posts = await PostsModel.find({ownerId: id})
             return posts
         } catch (e) {
-            throw new error("there was an error finding posts of user " + id, e)
+            throw new Error("there was an error finding posts of user " + id, e)
         }
     }
 
@@ -16,7 +16,7 @@ class PostControllers {
             const post = await PostsModel.findById(id)
             return post 
         } catch (e) {
-            throw new error("there was and erro finding the post with id: " + id, e)
+            throw new Error("there was and erro finding the post with id: " + id, e)
         }
     }
 
@@ -25,7 +25,7 @@ class PostControllers {
             const post = await PostsModel.find({slug: slug})
             return post
         } catch (e) {
-            throw new error("", e)
+            throw new Error("there was an error finding post y slug", e)
         }
     }
 
@@ -39,7 +39,7 @@ class PostControllers {
             ]})
             return posts
         } catch (e) {
-            throw new error("", e)
+            throw new Error("there was and error searching", e)
         }
     }
 
@@ -52,7 +52,7 @@ class PostControllers {
             return createdPost
 
         } catch (e) {
-            throw new error("", e)
+            throw new Error("there was an error creating a posts", e)
         }
     }
 
@@ -67,7 +67,7 @@ class PostControllers {
             return updatedData
 
         } catch (e) {
-            throw new error("", e)
+            throw new Error("there was an error updating the post", e)
         }
     }
 
@@ -76,7 +76,7 @@ class PostControllers {
             const deletePost = await PostsModel.deleteOne({_id: id})
             return deletePost
         } catch (e) {
-            throw new error("", e)
+            throw new Error("there was and error deleting the post", e)
         }
     }
 }

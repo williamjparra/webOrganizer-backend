@@ -1,6 +1,10 @@
 const { Schema, model } = require('mongoose');
 
 const FolderSchema = new Schema({
+    ownerId: {
+        type: Schema.Types.ObjectId,
+        required: true,
+    },
     title: { type: String, required: true, unique: true },
     description: String,
     posts: [{
