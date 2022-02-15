@@ -82,4 +82,4 @@ class PostControllers {
 }
 
 const postController = new PostControllers()
-module.export = postController
+module.exports = postController

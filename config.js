@@ -1,6 +1,6 @@
 require('dotenv').config()
 
-module.export = {
+module.exports = {
     data: "data",
     database: {
         url: process.env.DB_URI

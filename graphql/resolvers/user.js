@@ -3,12 +3,13 @@ const { generateToken, validateToken } = require('../../utils/jwtUtils')
 
 module.exports = {
     Mutation: {
-        async login(_, address, context) {
-            console.log(address)
-            if(!address) throw new Error('address is needed to login')
+        async login(_, {publicAddress}, context) {
+            console.log(context)
+            console.log(publicAddress)
+            if(!publicAddress) throw new Error('address is needed to login')
 
             try {
-                const user = await userController.getUserByPublicAddress(address)
+                const user = await userController.getUserByPublicAddress(publicAddress)
                 return {...user}
 
             } catch (e) {

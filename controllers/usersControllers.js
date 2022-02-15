@@ -81,7 +81,7 @@ class UsersControllers {
             })
             const createdUser = await user.save()
             console.log("*** user ***", user)
-            return user
+            return createdUser
 
         } catch (e) {
             throw new Error("there was an error creating User", e)
@@ -114,4 +114,4 @@ class UsersControllers {
 }
 
 const usersControllers = new UsersControllers()
-module.export = usersControllers
+module.exports = usersControllers

@@ -71,4 +71,4 @@ class FodelControllers {
 }
 
 const folderController = new FodelControllers()
-module.export = folderController
+module.exports = folderController
