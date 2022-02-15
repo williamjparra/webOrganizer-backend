@@ -30,7 +30,7 @@ class FodelControllers {
             return folders
 
         } catch(e) {
-            throw new Error(``, e)
+            throw new Error(`there was an error searching for the folder ${search}`, e)
         }
     }
 
@@ -43,7 +43,7 @@ class FodelControllers {
             return createdFolder            
 
         } catch(e) {
-            throw new Error(`there was an error creating the folder`, e)
+            throw new Error(`there was an error creating the folder: ${data}`, e)
         }
     }
 

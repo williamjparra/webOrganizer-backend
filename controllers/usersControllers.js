@@ -1,4 +1,4 @@
-const UsersModel = require('../models/Users')
+const UsersModel = require('../models/User')
 const moment = require('moment')
 
 class UsersControllers {
@@ -15,10 +15,10 @@ class UsersControllers {
 
     async getUserByPublicAddress(address) {
         try {
-            const user = await UsersModel.find({publicAddress: address})
+            const user = await UsersModel.findOne({publicAddress: address})
             return user
         } catch(e) {
-
+            throw new Error("there was an error getting with address " + address , e)
         }
     }
 

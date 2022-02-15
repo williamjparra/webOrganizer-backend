@@ -58,27 +58,35 @@ module.exports = gql`
         status: Boolean
         posts: [ID]
     }
-    type PostInput{
+
+    input PostInput{
         public: Boolean!
-        coverImage: File
+        coverImage: FileInput
         ownerId: ID!
         title: String!
         slug: String!
-        data: PostSchema!
-        profileImg: File
+        data: PostSchemaInput!
     }
-    type PostSchemaInput{
+
+    input FileInput {
+        filename: String!
+        mimetype: String!
+        encoding: String!
+    }
+
+    input PostSchemaInput{
         title: String
         link: String
-        description: DescriptionSchema!
+        description: DescriptionSchemaInput!
     }
-    type DescriptionSchemaInput{
+
+    input DescriptionSchemaInput{
         id: ID!
         rawHtml: String!
         content: String!
         htmlTagtype: String!
     }
-    type FolderInput{
+    input FolderInput{
         tile: String!
         description: String
         posts: [ID]
@@ -98,7 +106,7 @@ module.exports = gql`
         "Querys for folders"
         getFolders(_id: ID!): [Folder]
         getFolder(_id: ID!): Folder
-        searchFolder(text: String!); [Folder]
+        searchFolder(text: String!): [Folder]
     }
 
     type Mutation {
