@@ -1,24 +1,36 @@
 const config = require('./config')
-const { ApolloServer } = require('apollo-server')
+const { ApolloServer } = require('apollo-server-express')
+const express = require('express')
 const db = require('./database')
+const cookies = require('cookie-parser')
 
 const typeDefs = require('./graphql/typeDefs')
 const resolvers = require('./graphql/resolvers')
 
 const port = config?.server?.port || 3500
+const app = express();
 
-const apollo = new ApolloServer({
-    typeDefs,
-    resolvers,
-    context: (data) => ({ data }),
-    cors: {
-        origin: '*',
-    }
-})
+async function startServer() {
+    const server = new ApolloServer({
+        typeDefs,
+        resolvers,
+        context: (data) => (data),
+        cors: {
+            origin: '*',
+        }
+    })
 
-db()
+    await server.start()
+    
+    db()
 
-apollo.listen({ port })
-    .then(res => {
+    app.use(cookies());
+    
+    server.applyMiddleware({ app })
+    
+    app.listen(port, () => {
         console.log(`server running at ${port}`)
     })
+} 
+
+startServer()

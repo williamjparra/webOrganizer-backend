@@ -10,16 +10,18 @@ module.exports = {
 
             try {
                 const user = await userController.getUserByPublicAddress(publicAddress)
-                return {...user}
-
+                if(user) return {...user}
+                throw new Error(`user with address: ${publicAddress} not found`)
             } catch (e) {
                 throw new Error(e)
             }
         }
     },
     Query: {
-        async getUsers() {
+        async getUsers(_, data, context) {
+            console.log(context.req.cookies)
             try {
+                context.res.cookie("testCookie", "esto es el valor", {maxAge: 3500})
                 return await userController.getAllUsers()
             } catch(e) {
                 throw new Error(e)
