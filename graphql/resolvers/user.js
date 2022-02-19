@@ -19,7 +19,8 @@ module.exports = {
         async createUser(_, user, {req, res}) {
             console.log(user)
             try {
-                const userCreated = await userController.createUser(user)
+                const userCreated = await userController.createUser(user.input)
+                console.log("**** **** ****", userCreated)
                 return userCreated
             } catch (e) {
                 throw new Error(e)
