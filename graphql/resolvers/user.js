@@ -10,12 +10,22 @@ module.exports = {
 
             try {
                 const user = await userController.getUserByPublicAddress(publicAddress)
+                console.log(user)
                 return {...user}
 
             } catch (e) {
                 throw new Error(e)
             }
-        }
+        },
+        async createUser(_, user, {req, res}) {
+            console.log(user)
+            try {
+                const userCreated = await userController.createUser(user)
+                return userCreated
+            } catch (e) {
+                throw new Error(e)
+            }
+        } 
     },
     Query: {
         async getUsers() {

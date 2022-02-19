@@ -52,7 +52,7 @@ module.exports = gql`
         name: String
         lastName: String
         userName: String
-        publicAddress: String
+        publicAddress: String!
         createdAt: String
         updatedAt: String
         status: Boolean
