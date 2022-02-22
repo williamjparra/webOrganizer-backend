@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose')
+const Posts = require('./Post')
 
 const UserSchema = new Schema({
     email: {
@@ -22,7 +23,7 @@ const UserSchema = new Schema({
     publicAddress: String,
     posts: [{
         type: Schema.Types.ObjectId,
-        ref: 'Post'
+        ref: Posts
     }],
     createdAt: {
         type: Date,

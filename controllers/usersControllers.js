@@ -24,9 +24,13 @@ class UsersControllers {
 
     async getUserById(id) {
         try {
-            const user = await UsersModel.findById(id).populate('Post')
+            const user = await UsersModel.findById(id).populate({
+                path: 'posts',
+                model: 'Posts'
+            })
             return user
         } catch(e) {
+            console.log(e)
             throw new Error("there was an error getting the user", e)
         }
     }
@@ -48,13 +52,12 @@ class UsersControllers {
                 {name: {$regex: `.*${search}.*`}},
                 {lastName: {$regex: `.*${search}.*`}}
                 ],
-                $and: {
-                    status: true
-                }
+                $and: [{status: true}]
             }).limit(this.limit)
 
             return users
         } catch(e) {
+            console.log(e)
             throw new Error("there was an error getting the user", e)
         }
     }
@@ -89,14 +92,15 @@ class UsersControllers {
     }
 
     async updateUser({id, data}) {
+        console.log("****", data)
         try {
             
             const updatedData = await UsersModel.findOneAndUpdate(
                 {_id: id},
                 {$set: {...data}}
             )
-            console.log(updatedData)
-            return(updatedData)
+            console.log("updated", updatedData)
+            return updatedData
         } catch (e) {
             throw new Error("there was an error updating User", e)
         }

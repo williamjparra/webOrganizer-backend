@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const Posts = require('./Post')
 
 const FolderSchema = new Schema({
     ownerId: {
@@ -9,7 +10,7 @@ const FolderSchema = new Schema({
     description: String,
     posts: [{
         type: Schema.Types.ObjectId,
-        ref: 'Posts'
+        ref: Posts
     }]
 })
 
